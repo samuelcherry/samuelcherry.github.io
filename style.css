@@ -5,4 +5,25 @@ html, body {
 
 canvas {
   display: block;
+  margin-top: 20px;
+  margin-left: 20px;
+
+  
+}
+
+button {
+  margin-left: 250px;
+  margin-top: 25px;
+  padding-left: 25px;
+  padding-right: 25px;
+  border-radius: 4px;
+}
+
+body {
+  background-color: lightslategrey;
+}
+
+input {
+  width: 50px;
+  margin-left: 245px;
 }

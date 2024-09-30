@@ -4,18 +4,35 @@ const tileImages = [];
 let grid = [];
 
 const DIM = 20;
+const canvasSize = 600;
 
 function preload() {
     const path = "dungeon";
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < 34; i++) {
     tileImages[i] = loadImage(`${path}/${i}.png`)
     }
 }
 
+function saveImage(){
+    saveCanvas('dungeon.png');
+}
+
+function generateImage(){
+    location.reload();
+}
+
 
 function setup() {
-    createCanvas(600,600);
+    createCanvas(canvasSize, canvasSize);
 
+    let buttonGenerate = createButton('generate');
+    buttonGenerate.position(-25, 620);
+    buttonGenerate.mousePressed(generateImage);
+
+    let buttonExport = createButton('export');
+    buttonExport.position(100, 620);
+    buttonExport.mousePressed(saveImage);
+    
 
 rotate
 //TOP
@@ -49,12 +66,12 @@ rotate
 //COLOR TILES
     tiles[21] = new Tile(tileImages[21], ["BBB","BBB","BBB","BBB"]);
     tiles[22] = new Tile(tileImages[22], ["CCC","CCC","CCC","CCC"]);
-    tiles[23] = new Tile(tileImages[23], ["HHH","HHH","HHH","HHH"]);
+    tiles[23] = new Tile(tileImages[23], ["BBB","BBB","BBB","BBB"]);
 //CHEST
     tiles[24] = new Tile(tileImages[24], ["BBB","BBD","EBB","BBB"]);
-    tiles[25] = new Tile(tileImages[25], ["BBE","DBB","BBB","BBB"]);
-    tiles[26] = new Tile(tileImages[26], ["BBB","BBB","BBE","DBB"]);
-    tiles[27] = new Tile(tileImages[27], ["EBB","BBB","BBB","BBD"]);
+    tiles[25] = new Tile(tileImages[25], ["BBB","BBB","BBE","DBB"]);
+    tiles[26] = new Tile(tileImages[26], ["EBB","BBB","BBB","BBD"]);
+    tiles[27] = new Tile(tileImages[27], ["BBE","DBB","BBB","BBB"]);
 //GROUND ACCENTS
     tiles[28] = new Tile(tileImages[28], ["BBB","BBB","BBB","BBB"]);
     tiles[29] = new Tile(tileImages[29], ["BBB","BBB","BBB","BBB"]);
@@ -62,18 +79,8 @@ rotate
     tiles[31] = new Tile(tileImages[31], ["BBB","BBB","BBB","BBB"]);
     tiles[32] = new Tile(tileImages[32], ["BBB","BBB","BBB","BBB"]);
     tiles[33] = new Tile(tileImages[33], ["BBB","BBB","BBB","BBB"]);
-//PIT
-    tiles[34] = new Tile(tileImages[34], ["BBB","BBH","HHB","BBB"]);
-    tiles[35] = new Tile(tileImages[35], ["BBB","BBB","BHH","HBB"]);
-    tiles[36] = new Tile(tileImages[36], ["HHB","BBB","BBB","BBH"]);
-    tiles[37] = new Tile(tileImages[37], ["BHH","HBB","BBB","BBB"]);
-    tiles[38] = new Tile(tileImages[38], ["HHH","HBB","BBB","BBH"]);
-    tiles[39] = new Tile(tileImages[39], ["BBB","BBH","HHH","HBB"]);
 
-
-
-
-    for (let i = 0; i < 25; i++) {
+    for (let i = 0; i < 24; i++) {
       for (let j = 1; j < 4; j++) {
         tiles.push(tiles[i].rotate(j));
       }
@@ -104,10 +111,6 @@ function checkValid(arr, valid){
             arr.splice(i,1);
         }
     }
-}
-
-function mousePressed() {
-    redraw();
 }
 
 

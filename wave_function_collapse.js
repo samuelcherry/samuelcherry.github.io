@@ -3,58 +3,66 @@ const tileImages = [];
 
 let grid = [];
 
-const DIM = 40;
+const DIM = 20;
 
 function preload() {
     const path = "dungeon";
-    for (let i = 0; i < 41; i++) {
+    for (let i = 0; i < 40; i++) {
     tileImages[i] = loadImage(`${path}/${i}.png`)
     }
 }
 
 
 function setup() {
-    createCanvas(1200,1200);
+    createCanvas(600,600);
 
-rotated
-    tiles[0] = new Tile(tileImages[0], ["CCC","ABB","BBA","CCC"]);
-    tiles[1] = new Tile(tileImages[1], ["ABB","BBB","BBA","CCC"]);
+
+rotate
+//TOP
+    tiles[0] = new Tile(tileImages[0], ["CCC","ABB","BBB","BBA"]);
+    tiles[1] = new Tile(tileImages[1], ["CCC","ABB","BBB","BBA"]);
     tiles[2] = new Tile(tileImages[2], ["CCC","ABB","BBB","BBA"]);
-    tiles[3] = new Tile(tileImages[3], ["CCC","ABB","BBB","BBA"]);
-    tiles[4] = new Tile(tileImages[4], ["CCC","ABB","BBB","BBA"]);
-    tiles[5] = new Tile(tileImages[5], ["CCC","CCC","ABB","BBA"]);
-    tiles[7] = new Tile(tileImages[7], ["ABB","BBB","BBA","CCC"]);
-    tiles[8] = new Tile(tileImages[8], ["ABB","BBB","BBA","CCC"]);
-    tiles[9] = new Tile(tileImages[9], ["ABB","BBA","CCC","CCC"]);
-    tiles[10] = new Tile(tileImages[10], ["BBB","BBA","CCC","ABB"]);
-    tiles[11] = new Tile(tileImages[11], ["BBB","BBA","CCC","ABB"]);
+//RIGHT
+    tiles[3] = new Tile(tileImages[3], ["BBA","CCC","ABB","BBB"]);
+    tiles[4] = new Tile(tileImages[4], ["BBA","CCC","ABB","BBB"]);
+    tiles[5] = new Tile(tileImages[5], ["BBA","CCC","ABB","BBB"]);
+//DOWN
+    tiles[6] = new Tile(tileImages[6], ["BBB","BBA","CCC","ABB"]);
+    tiles[7] = new Tile(tileImages[7], ["BBB","BBA","CCC","ABB"]);
+    tiles[8] = new Tile(tileImages[8], ["BBB","BBA","CCC","ABB"]);
+//RIGHT
+    tiles[9] = new Tile(tileImages[9], ["ABB","BBB","BBA","CCC"]);
+    tiles[10] = new Tile(tileImages[10], ["ABB","BBB","BBA","CCC"]);
+    tiles[11] = new Tile(tileImages[11], ["ABB","BBB","BBA","CCC"]);
+//CAVE GROUND
     tiles[12] = new Tile(tileImages[12], ["BBB","BBB","BBB","BBB"]);
-    tiles[13] = new Tile(tileImages[13], ["BBA","CCC","ABB","BBB"]);
-    tiles[14] = new Tile(tileImages[14], ["BBA","CCC","ABB","BBB"]);
-    tiles[15] = new Tile(tileImages[15], ["BBA","CCC","ABB","BBB"]);
-    tiles[16] = new Tile(tileImages[16], ["BBB","BBA","CCC","ABB"]);
-    tiles[17] = new Tile(tileImages[17], ["BBA","CCC","CCC","ABB"]);
-
-    tiles[19] = new Tile(tileImages[19], ["BBB","BBA","ABB","BBB"]);
-    tiles[20] = new Tile(tileImages[20], ["BBB","BBB","BBA","ABB"]);
-    tiles[21] = new Tile(tileImages[21], ["ABB","BBB","BBB","BBA"]);
-    tiles[22] = new Tile(tileImages[22], ["BBA","ABB","BBB","BBB"]);
-    tiles[23] = new Tile(tileImages[23], ["BBB","BBB","BBB","BBB"]);
-    tiles[24] = new Tile(tileImages[24], ["BBB","BDD","EEB","BBB"]);
-//non-rotated
-    tiles[6] = new Tile(tileImages[6], ["BBB","BBB","BBB","BBB"]);
-    tiles[18] = new Tile(tileImages[18], ["CCC","CCC","CCC","CCC"]);
-    tiles[40] = new Tile(tileImages[40], ["HHH","HHH","HHH","HHH"]);
-    tiles[25] = new Tile(tileImages[25], ["BEE","DBB","BBB","BBB"]);
-    tiles[26] = new Tile(tileImages[26], ["BBB","BBB","BEE","DDB"]);
-    tiles[27] = new Tile(tileImages[27], ["EEB","BBB","BBB","BBD"]);
+//CORNER INSIDE
+    tiles[13] = new Tile(tileImages[13], ["CCC","ABB","BBA","CCC"]);
+    tiles[14] = new Tile(tileImages[14], ["CCC","CCC","ABB","BBA"]);
+    tiles[15] = new Tile(tileImages[15], ["BBA","CCC","CCC","ABB"]);
+    tiles[16] = new Tile(tileImages[16], ["ABB","BBA","CCC","CCC"]);
+//CORNER OUTSIDE 
+    tiles[17] = new Tile(tileImages[17], ["BBB","BBA","ABB","BBB"]);
+    tiles[18] = new Tile(tileImages[18], ["BBB","BBB","BBA","ABB"]);
+    tiles[19] = new Tile(tileImages[19], ["ABB","BBB","BBB","BBA"]);
+    tiles[20] = new Tile(tileImages[20], ["BBA","ABB","BBB","BBB"]);
+//COLOR TILES
+    tiles[21] = new Tile(tileImages[21], ["BBB","BBB","BBB","BBB"]);
+    tiles[22] = new Tile(tileImages[22], ["CCC","CCC","CCC","CCC"]);
+    tiles[23] = new Tile(tileImages[23], ["HHH","HHH","HHH","HHH"]);
+//CHEST
+    tiles[24] = new Tile(tileImages[24], ["BBB","BBD","EBB","BBB"]);
+    tiles[25] = new Tile(tileImages[25], ["BBE","DBB","BBB","BBB"]);
+    tiles[26] = new Tile(tileImages[26], ["BBB","BBB","BBE","DBB"]);
+    tiles[27] = new Tile(tileImages[27], ["EBB","BBB","BBB","BBD"]);
+//GROUND ACCENTS
     tiles[28] = new Tile(tileImages[28], ["BBB","BBB","BBB","BBB"]);
     tiles[29] = new Tile(tileImages[29], ["BBB","BBB","BBB","BBB"]);
     tiles[30] = new Tile(tileImages[30], ["BBB","BBB","BBB","BBB"]);
     tiles[31] = new Tile(tileImages[31], ["BBB","BBB","BBB","BBB"]);
     tiles[32] = new Tile(tileImages[32], ["BBB","BBB","BBB","BBB"]);
     tiles[33] = new Tile(tileImages[33], ["BBB","BBB","BBB","BBB"]);
-//Pit
+//PIT
     tiles[34] = new Tile(tileImages[34], ["BBB","BBH","HHB","BBB"]);
     tiles[35] = new Tile(tileImages[35], ["BBB","BBB","BHH","HBB"]);
     tiles[36] = new Tile(tileImages[36], ["HHB","BBB","BBB","BBH"]);
